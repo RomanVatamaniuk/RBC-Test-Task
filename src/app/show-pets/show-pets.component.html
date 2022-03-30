@@ -1,0 +1,16 @@
+<div class="contentBox">
+  <div *ngFor="let pet of pets" class="box">
+    <img src="{{pet.image}}" alt="{{pet.type === 'Dog'? 'Dog': 'Cat'}}"/>
+    <content>
+      <span class="name">{{pet.name}}</span>
+      <span>Age: {{pet.age}}</span>
+      <span>Breed: {{pet.Breed}}</span>
+      <span>Gender: {{pet.gender}}</span>
+      <a href="#">View the details...</a>
+    </content>
+    <div class="buttonArea">
+      <button>Adopt me</button>
+    </div>
+  </div>
+</div>
+
