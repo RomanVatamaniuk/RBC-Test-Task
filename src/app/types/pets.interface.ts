@@ -6,4 +6,5 @@ export interface PetsInterface {
   age: string
   image: string
   gender: string
+  adopted:boolean
 }

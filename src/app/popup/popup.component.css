@@ -1,0 +1,24 @@
+.popupBody {
+  position:fixed;
+  top:90%;
+  left:40%;
+  width:400px;
+  height:50px;
+  background: linear-gradient(180deg, #2f39a3 0%, rgba(9,9,121,1) 35%);
+  color:#fff;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  border-radius:7px;
+}
+.popupContent{
+  display:flex;
+  justify-content: space-between;
+  width:80%;
+}
+button{
+  background-color: transparent;
+  border:none;
+  outline:none;
+  color:#d40baf;
+}

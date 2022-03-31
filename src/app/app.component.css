@@ -16,3 +16,7 @@ header {
 .logo span{
   color:#a32f48;
 }
+.showPopup {
+  transition: all ease-in .4s;
+}
+

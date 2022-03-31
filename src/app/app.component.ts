@@ -6,5 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'PetsApplication';
+
+  ngOnInit() {
+  }
+  popup:boolean = true;
+
+  showData(data:boolean) {
+    console.log(data);
+    setTimeout(() => {
+      this.popup = true;
+    }, 3000)
+    this.popup = false;
+  }
 }

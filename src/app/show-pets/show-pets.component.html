@@ -1,4 +1,5 @@
 <div class="contentBox">
+
   <div *ngFor="let pet of pets" class="box">
     <img src="{{pet.image}}" alt="{{pet.type === 'Dog'? 'Dog': 'Cat'}}"/>
     <content>
@@ -9,7 +10,7 @@
       <a href="#">View the details...</a>
     </content>
     <div class="buttonArea">
-      <button>Adopt me</button>
+      <button (click)="adoptAnimal(pet)">{{pet.adopted? 'Adopted':'Adopt me'}}</button>
     </div>
   </div>
 </div>
