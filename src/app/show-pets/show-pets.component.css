@@ -1,7 +1,9 @@
 .contentBox {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  max-width:952px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width:1000px;
   margin:30px auto;
 }
 img {

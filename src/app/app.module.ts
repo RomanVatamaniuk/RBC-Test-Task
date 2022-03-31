@@ -8,12 +8,14 @@ import { PetsService } from './services/pets.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { PopupComponent } from './popup/popup.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ShowPetsComponent,
     PopupComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,

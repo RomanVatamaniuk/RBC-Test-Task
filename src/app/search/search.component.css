@@ -1,0 +1,10 @@
+div{
+  display:flex;
+  justify-content: center;
+  margin:20px;
+}
+.search {
+  width:350px;
+  height:35px;
+  padding:5px;
+}

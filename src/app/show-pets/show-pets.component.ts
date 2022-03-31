@@ -13,8 +13,8 @@ export class ShowPetsComponent implements OnInit {
 
   pets: PetsInterface[] = [];
   petsList = {};
-  popup:boolean = false;
-  adopted:boolean = true;
+  popup: boolean = false;
+  adopted: boolean = true;
 
   @Output() showData: EventEmitter<any> = new EventEmitter()
 
@@ -24,6 +24,12 @@ export class ShowPetsComponent implements OnInit {
     this.petsService.getPets().subscribe((pets: PetsInterface[]) => {
       this.pets = pets;
     });
+  }
+
+  searchText: string = '';
+
+  onSearchTextEntered(searchValue:string) {
+    this.searchText = searchValue;
   }
 
   adoptAnimal(data: PetsInterface):void{

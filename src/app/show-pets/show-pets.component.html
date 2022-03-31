@@ -1,6 +1,7 @@
+<app-search (searchTextChanged)="onSearchTextEntered($event)"></app-search>
 <div class="contentBox">
-
-  <div *ngFor="let pet of pets" class="box">
+  <div *ngFor="let pet of pets">
+    <div class="box" *ngIf="searchText === ''|| pet.name.toLowerCase().includes(searchText) || searchText === '' || pet.Breed.toLowerCase().includes(searchText)">
     <img src="{{pet.image}}" alt="{{pet.type === 'Dog'? 'Dog': 'Cat'}}"/>
     <content>
       <span class="name">{{pet.name}}</span>
@@ -11,6 +12,7 @@
     </content>
     <div class="buttonArea">
       <button (click)="adoptAnimal(pet)">{{pet.adopted? 'Adopted':'Adopt me'}}</button>
+    </div>
     </div>
   </div>
 </div>

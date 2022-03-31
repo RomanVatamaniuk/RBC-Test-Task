@@ -18,7 +18,7 @@
       "age": "7 months",
       "image": "https://cdn.britannica.com/68/160068-050-53FE2889/Snowshoe-cat.jpg?q=60",
       "gender": "male",
-      "adopted": false
+      "adopted": true
     },
     {
       "id": 3,
@@ -28,7 +28,7 @@
       "age": "2 months",
       "image": "https://cdn.britannica.com/93/181393-050-9FC2E61A/cat-Alison-Eldridge-orange-Calico.jpg?q=60",
       "gender": "male",
-      "adopted": false
+      "adopted": true
     },
     {
       "id": 4,
