@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { PopupComponent } from './popup/popup.component';
 import { SearchComponent } from './search/search.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { SearchComponent } from './search/search.component';
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
+    NgxPaginationModule
   ],
   providers: [PetsService],
   bootstrap: [AppComponent]

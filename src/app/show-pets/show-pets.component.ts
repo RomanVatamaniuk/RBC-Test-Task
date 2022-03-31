@@ -15,18 +15,22 @@ export class ShowPetsComponent implements OnInit {
   petsList = {};
   popup: boolean = false;
   adopted: boolean = true;
+  searchText: string = '';
 
   @Output() showData: EventEmitter<any> = new EventEmitter()
 
   constructor(private http: HttpClient, private petsService: PetsService) { }
 
+  totalLength:any;
+  page:number = 1;
+
   ngOnInit(): void {
     this.petsService.getPets().subscribe((pets: PetsInterface[]) => {
       this.pets = pets;
+
+      this.totalLength = pets.length;
     });
   }
-
-  searchText: string = '';
 
   onSearchTextEntered(searchValue:string) {
     this.searchText = searchValue;
