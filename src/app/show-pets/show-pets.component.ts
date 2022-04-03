@@ -35,12 +35,19 @@ export class ShowPetsComponent implements OnInit {
   }
 
   onSearchTextEntered(searchValue:string) {
-    this.searchText = searchValue;
+     this.searchText = searchValue;
     console.log('SearchEntered:', this.searchText);
     this.petsService.searchPets(this.searchText).subscribe((pets: PetsInterface[]) => {
       this.pets = pets;
       this.totalLength = pets.length;
     });
+  }
+
+  checkSearch(pet:PetsInterface, searchText:string){
+    return pet.name.toLowerCase().includes(searchText)
+      || searchText === '' || pet.Breed.toLowerCase().includes(searchText)
+      || searchText === '' || pet.Breed.toUpperCase().includes(searchText)
+      || searchText === '' || pet.name.toUpperCase().includes(searchText)
   }
 
   adoptAnimal(data: PetsInterface):void{
