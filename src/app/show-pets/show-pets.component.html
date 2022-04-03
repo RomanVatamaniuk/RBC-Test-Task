@@ -1,28 +1,32 @@
 <app-search (searchTextChanged)="onSearchTextEntered($event)"></app-search>
+<router-outlet></router-outlet>
+<div *ngIf="pets.length">
 <div class="contentBox">
   <div *ngFor="let pet of pets | paginate: { itemsPerPage: 10,
     currentPage: page,
     totalItems: totalLength}">
 
-    <div class="box" *ngIf="searchText === ''|| pet.name.toLowerCase().includes(searchText)
-    || searchText === '' || pet.Breed.toLowerCase().includes(searchText)
-    || searchText === '' || pet.Breed.toUpperCase().includes(searchText)
-    || searchText === '' || pet.name.toUpperCase().includes(searchText)">
-
+  <div class="box">
     <img src="{{pet.image}}" alt="{{pet.type === 'Dog'? 'Dog': 'Cat'}}"/>
     <content>
       <span class="name">{{pet.name}}</span>
       <span>Age: {{pet.age}}</span>
       <span>Breed: {{pet.Breed}}</span>
       <span>Gender: {{pet.gender}}</span>
-      <a href="#">View the details...</a>
+      <a href="#" [routerLink]="['/pet', pet.id]">View the details...</a>
     </content>
+
     <div class="buttonArea">
       <button (click)="adoptAnimal(pet)">{{pet.adopted? 'Adopted':'Adopt me'}}</button>
     </div>
-    </div>
   </div>
+  </div>
+</div>
 </div>
 <pagination-controls class="my-pagination pagination" (pageChange)="page = $event"></pagination-controls>
 
-
+<!--<div class="box" *ngIf="searchText === ''|| pet.name.toLowerCase().includes(searchText)-->
+<!--    || searchText === '' || pet.Breed.toLowerCase().includes(searchText)-->
+<!--    || searchText === '' || pet.Breed.toUpperCase().includes(searchText)-->
+<!--    || searchText === '' || pet.name.toUpperCase().includes(searchText)"-->
+<!--&gt;</div>-->

@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { PopupComponent } from './popup/popup.component';
 import { SearchComponent } from './search/search.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { AppRoutingModule } from './app-routing/app-routing.module';
+import { PetPageComponent } from './pet-page/pet-page.component';
 
 @NgModule({
   declarations: [
@@ -17,11 +19,13 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ShowPetsComponent,
     PopupComponent,
     SearchComponent,
+    PetPageComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    AppRoutingModule,
     FormsModule,
     NgxPaginationModule
   ],

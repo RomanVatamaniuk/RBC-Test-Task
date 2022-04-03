@@ -10,11 +10,15 @@ import { PetsInterface } from '../types/pets.interface';
 })
 
 export class PopupComponent implements OnInit {
+
   onePet: any = {};
+  adoption: any;
+
   constructor(private petsService: PetsService) { }
 
   ngOnInit() {
-    this.onePet = this.petsService.receivePet()
+    this.onePet = this.petsService.receivePet();
+
   }
 
   unAdoptPets(data: PetsInterface) {
@@ -26,15 +30,17 @@ export class PopupComponent implements OnInit {
       "age": data.age,
       "image": data.image,
       "gender": data.gender,
-      "adopted": false
+      "adopted": false,
+      "neutered": data.neutered,
+      "vaccinated": data.vaccinated
     }
-    this.petsService.adoptPets(animal).subscribe((pets) => {
+    this.adoption = this.petsService.adoptPets(animal).subscribe((pets) => {
       console.log('Pets:', pets);
     });
     console.log('UnAdopt Pet', data)
   }
 
-
-
-
+  ngOnDestroy() {
+    this.adoption.unsubscribe();
+  }
 }

@@ -1,0 +1,40 @@
+<router-outlet>
+  <div class="btns">
+    <button class="back-btn" [routerLink]="['']">Back to home page</button>
+    <div class="switch-view">
+      <button class="back-btn" *ngIf = "pet.id > 1" [routerLink]="['/pet', pet.id-1]">Previous</button>
+        <p class="amount">{{pet.id}}/40</p>
+<!--      <button class="back-btn" *ngIf = "pet.id < 40" [routerLink]="['/pet', pet.id+1]">Next</button>-->
+            <button class="back-btn" [ngStyle]="{'visibility': pet.id > 39 ? 'hidden':'visible'}" [routerLink]="['/pet', pet.id+1]">Next</button>
+    </div>
+  </div>
+
+  <div class="page-content">
+    <div class="box">
+      <img src="{{pet.image}}" alt="{{pet.type}}" width="400px" height="450px"/>
+      <div class="description">
+        <h1>{{pet.name}}</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium,
+          alias beatae eum ipsam, maxime molestiae molestias neque praesentium
+          quasi quis quos velit veritatis voluptatum? Aperiam architecto fugiat
+          nemo quibusdam repellat repudiandae suscipit voluptatibus. Aliquid aperiam
+          asperiores consectetur consequuntur cum delectus dignissimos dolore ducimus
+          enim, est ex fuga illo incidunt ipsa iste modi natus necessitatibus nostrum
+          placeat possimus praesentium quo recusandae reprehenderit tempora tempore temporibus
+          voluptates? Autem blanditiis corporis cumque dignissimos dolor dolores eaque eum facilis,
+          id inventore iste itaque labore magni minima nostrum quaerat quas quidem reiciendis, suscipit
+          tempore unde vero voluptate. Alias aliquam amet earum laborum sapiente sit vel.
+        </p>
+        <ul>
+          <li><h3>Breed:</h3>{{pet.Breed}}</li>
+          <li><h3>Gender:</h3>{{pet.gender}}</li>
+          <li><h3>Age:</h3>{{pet.age}}</li>
+          <li><h3>Neutered:</h3>{{pet.neutered}}</li>
+          <li><h3>Vaccinated:</h3>{{pet.vaccinated}}</li>
+        </ul>
+      </div>
+      </div>
+    </div>
+</router-outlet>
+

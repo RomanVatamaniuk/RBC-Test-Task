@@ -7,4 +7,6 @@ export interface PetsInterface {
   image: string
   gender: string
   adopted:boolean
+  neutered:string
+  vaccinated:string
 }
