@@ -1,7 +1,9 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import { PetsInterface } from '../types/pets.interface';
 import { PetsService } from '../services/pets.service';
+import {FilterComponent} from '../filter/filter.component';
+import { petsProperties } from '../types/petsProperties.interface';
 
 @Component({
   selector: 'app-show-pets',
@@ -17,10 +19,10 @@ export class ShowPetsComponent implements OnInit {
   adopted: boolean = true;
   searchText: string = '';
   petType: string = 'All';
-  petGender: string = '';
+  petGender: string = 'All';
   adoptedBtn: boolean = false;
 
-  @Output() showData: EventEmitter<any> = new EventEmitter()
+  @Output() showData: EventEmitter<any> = new EventEmitter();
 
   constructor(private http: HttpClient, private petsService: PetsService) { }
 
@@ -28,10 +30,23 @@ export class ShowPetsComponent implements OnInit {
   page:number = 1;
 
   ngOnInit(): void {
-    this.petsService.getPets().subscribe((pets: PetsInterface[]) => {
+   this.renderPets();
+  }
+
+  renderPets(){
+    this.petsService.sortPets(this.petType, this.petGender).subscribe((pets: PetsInterface[]) => {
       this.pets = pets;
       this.totalLength = pets.length;
     });
+  }
+
+  onFilter(properties: petsProperties) {
+    console.log('PROPERTIES',properties)
+    this.petType = properties.type
+    this.petGender = properties.gender
+    console.log('TYPE:', this.petType);
+    console.log('GENDER:', this.petGender);
+    this.renderPets()
   }
 
   onSearchTextEntered(searchValue:string) {
@@ -72,9 +87,7 @@ export class ShowPetsComponent implements OnInit {
       this.petsService.setPets(animal);
     }
 
-    this.petsService.getPets().subscribe((pets: PetsInterface[]) => {
-      this.pets = pets;
-    })
+    this.renderPets()
   }
 
 

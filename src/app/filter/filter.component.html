@@ -1,0 +1,12 @@
+<div class="filter">
+  <div class="filter-type">
+    <label><input type="radio" name="type" value="Cat" (click)="sortAnimalsByType($event.target)">Cat</label>
+    <label><input type="radio" name="type" value="Dog" (click)="sortAnimalsByType($event.target)">Dog</label>
+    <label><input type="radio" name="type" value="All" (click)="sortAnimalsByType($event.target)" checked>All</label>
+  </div>
+  <div class="filter-type">
+    <label><input type="radio" name="gender" value="male" (click)="sortAnimalsByGender($event.target)">Male</label>
+    <label><input type="radio" name="gender" value="female" (click)="sortAnimalsByGender($event.target)">Female</label>
+    <label><input type="radio" name="gender" value="All" (click)="sortAnimalsByGender($event.target)" checked>All</label>
+  </div>
+</div>

@@ -7,4 +7,6 @@ div{
   width:350px;
   height:35px;
   padding:5px;
+  position: absolute;
+  z-index: 1000;
 }

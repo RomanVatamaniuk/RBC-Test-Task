@@ -12,6 +12,7 @@ import { SearchComponent } from './search/search.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { PetPageComponent } from './pet-page/pet-page.component';
+import { FilterComponent } from './filter/filter.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { PetPageComponent } from './pet-page/pet-page.component';
     PopupComponent,
     SearchComponent,
     PetPageComponent,
+    FilterComponent,
   ],
   imports: [
     BrowserModule,

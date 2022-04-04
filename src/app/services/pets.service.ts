@@ -18,7 +18,7 @@ export class PetsService {
 
   getPetsById(id:number):Observable<PetsInterface> {
     return this.http.get<PetsInterface>(`http://localhost:3000/pets/${id}`)
-      
+
   }
 
   searchPets(searchValue: string): Observable<PetsInterface[]>{
@@ -35,5 +35,17 @@ export class PetsService {
 
   receivePet(){
     return this.onePet;
+  }
+
+  sortPets(type:string, gender:string) {
+    if(type === 'All' && gender !== 'All'){
+      return this.http.get<PetsInterface[]>(`http://localhost:3000/pets?gender=json-server&gender=${gender}`);
+    } else if (gender === 'All' && type !== 'All'){
+      return this.http.get<PetsInterface[]>(`http://localhost:3000/pets?type=json-server&type=${type}`);
+    } else if(type === 'All' && gender === 'All'){
+      return this.http.get<PetsInterface[]>('http://localhost:3000/pets')
+    } else {
+      return this.http.get<PetsInterface[]>(`http://localhost:3000/pets?type=json-server&gender=${gender}&type=${type}`);
+    }
   }
 }

@@ -1,6 +1,7 @@
 <app-search (searchTextChanged)="onSearchTextEntered($event)"></app-search>
+<app-filter (properties)="onFilter($event)"></app-filter>
 <router-outlet></router-outlet>
-<div *ngIf="pets.length">
+<div *ngIf="pets.length" class="main">
 <div class="contentBox">
   <div *ngFor="let pet of pets | paginate: { itemsPerPage: 10,
     currentPage: page,
