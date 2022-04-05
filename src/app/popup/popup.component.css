@@ -21,4 +21,5 @@ button{
   border:none;
   outline:none;
   color:#d40baf;
+  cursor:pointer;
 }

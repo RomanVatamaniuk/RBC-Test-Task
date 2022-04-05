@@ -15,7 +15,7 @@ import { PetsInterface } from '../types/pets.interface';
 export class PetPageComponent implements OnInit {
 
   pet!: PetsInterface;
-  adoptBtn:string = '';
+  adoption: any;
 
   constructor(
     private http: HttpClient,
@@ -25,15 +25,67 @@ export class PetPageComponent implements OnInit {
 ) {}
 
   ngOnInit():void {
+    this.renderPet()
+  }
+
+  renderPet() {
     this.activatedRoute.params.subscribe((params: any) => {
       this.pet = params
       if (params.id) {
         this.petsService.getPetsById(params.id).subscribe((res: PetsInterface)=>{
           this.pet = res;
         });
-        console.log('Pet:' ,this.pet);
       }
     })
+  }
+
+  adoptPets(data: PetsInterface){
+    if(data.adopted) {
+      this.unAdoptPets(data);
+    } else {
+      const animal = {
+        "id": data.id,
+        "name": data.name,
+        "type": data.type,
+        "Breed": data.Breed,
+        "age": data.age,
+        "image": data.image,
+        "gender": data.gender,
+        "adopted": true,
+        "neutered": data.neutered,
+        "vaccinated": data.vaccinated
+      }
+      this.petsService.adoptPets(animal).subscribe((pets) => {
+        console.log('Pets:', pets);
+        this.pet = pets[data.id];
+        this.renderPet()
+      });
+    }
+  }
+
+  unAdoptPets(data: PetsInterface) {
+    const animal = {
+      "id": data.id,
+      "name": data.name,
+      "type": data.type,
+      "Breed": data.Breed,
+      "age": data.age,
+      "image": data.image,
+      "gender": data.gender,
+      "adopted": false,
+      "neutered": data.neutered,
+      "vaccinated": data.vaccinated
+    }
+    this.adoption = this.petsService.adoptPets(animal).subscribe((pets) => {
+      console.log('Pets:', pets);
+      this.pet = pets[data.id];
+      this.renderPet()
+    });
+    console.log('UnAdopt Pet', data)
+  }
+
+  ngOnDestroy() {
+    this.adoption.unsubscribe();
   }
 }
 

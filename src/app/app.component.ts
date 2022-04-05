@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NotifierService } from './services/notifier.service';
 
 @Component({
   selector: 'app-root',
@@ -7,15 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  ngOnInit() {
-  }
-  popup:boolean = true;
+  constructor(private notifierService: NotifierService) {}
 
-  showData(data:boolean) {
-    console.log(data);
-    setTimeout(() => {
-      this.popup = true;
-    }, 3000)
-    this.popup = false;
+  ngOnInit() {
   }
 }

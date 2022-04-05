@@ -6,8 +6,7 @@ import { ShowPetsComponent } from '../show-pets/show-pets.component';
 
 const routes: Routes = [
   {path:'', component: ShowPetsComponent},
-  {path: '', redirectTo: '/', pathMatch: 'full'},
-  {path: '', component: ShowPetsComponent},
+  {path: '', redirectTo: '', pathMatch: 'full'},
   {path: 'pet/:id', component: PetPageComponent},
 ];
 

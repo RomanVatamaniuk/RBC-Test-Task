@@ -8,10 +8,11 @@ import {environment} from '../../environments/environment';
 
 export class PetsService {
 
-
+  pets:PetsInterface[] = [];
   onePet:any;
 
   constructor(private http: HttpClient) { }
+
   getPets():Observable<PetsInterface[]>{
     return this.http.get<PetsInterface[]>('http://localhost:3000/pets')
   }
@@ -37,6 +38,12 @@ export class PetsService {
     return this.onePet;
   }
 
+  setPet(data:PetsInterface[]) {
+    return this.pets = data;
+  }
+  getPet(){
+    return this.pets;
+  }
   sortPets(type:string, gender:string) {
     if(type === 'All' && gender !== 'All'){
       return this.http.get<PetsInterface[]>(`http://localhost:3000/pets?gender=json-server&gender=${gender}`);
@@ -48,4 +55,5 @@ export class PetsService {
       return this.http.get<PetsInterface[]>(`http://localhost:3000/pets?type=json-server&gender=${gender}&type=${type}`);
     }
   }
+
 }

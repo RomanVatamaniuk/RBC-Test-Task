@@ -7,7 +7,9 @@
     currentPage: page,
     totalItems: totalLength}">
 
-  <div class="box" *ngIf="searchText === '' || checkSearch(pet, searchText)">
+  <div [ngClass]="pet.adopted? 'disabled-box': 'box'"
+       *ngIf="searchText === '' || checkSearch(pet, searchText)"
+  >
     <img src="{{pet.image}}" alt="{{pet.type === 'Dog'? 'Dog': 'Cat'}}"/>
     <content>
       <span class="name">{{pet.name}}</span>
@@ -18,7 +20,11 @@
     </content>
 
     <div class="buttonArea">
-      <button (click)="adoptAnimal(pet)">{{pet.adopted? 'Adopted':'Adopt me'}}</button>
+      <button
+        (click)="adoptAnimal(pet)"
+        [ngClass]="pet.adopted? 'adopted-btn': 'unadopted-btn'"
+      >{{pet.adopted ? 'Adopted': 'Adopt me'}}
+      </button>
     </div>
   </div>
   </div>

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { ShowPetsComponent } from './show-pets/show-pets.component';
 import {HttpClientModule} from "@angular/common/http";
@@ -13,6 +12,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { PetPageComponent } from './pet-page/pet-page.component';
 import { FilterComponent } from './filter/filter.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { SnackBarComponent } from './snack-bar/snack-bar.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { FilterComponent } from './filter/filter.component';
     SearchComponent,
     PetPageComponent,
     FilterComponent,
+    SnackBarComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,8 @@ import { FilterComponent } from './filter/filter.component';
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatSnackBarModule
   ],
   providers: [PetsService],
   bootstrap: [AppComponent]

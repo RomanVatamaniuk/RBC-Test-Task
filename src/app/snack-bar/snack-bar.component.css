@@ -1,0 +1,21 @@
+div {
+  width:400px;
+  height:40px;
+  background-color: #2f39a3;
+  color:#fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+}
+p {
+  margin:20px 0;
+}
+button {
+  color:#e609b6;
+  font-weight: bolder;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}

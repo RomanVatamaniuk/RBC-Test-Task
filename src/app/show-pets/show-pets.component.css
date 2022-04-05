@@ -20,7 +20,14 @@ img {
   display:flex;
   flex-direction: column;
   border:2px solid #fff;
-
+}
+.disabled-box {
+  width: 300px;
+  margin:10px;
+  padding: 10px;
+  display:flex;
+  flex-direction: column;
+  border:2px solid #959596;
 }
 .box:hover {
   border:2px solid #3936e3;
@@ -48,7 +55,7 @@ a {
   display: flex;
   justify-content: center;
 }
-button{
+.unadopted-btn{
   width:80%;
   margin:20px 0;
   height:30px;
@@ -58,12 +65,23 @@ button{
   cursor:pointer;
   transition:.3s;
 }
-button:hover{
+.unadopted-btn:hover{
   background-color:#fff;
   border:2px solid #2f39a3;
   color:#2f39a3;
-  cursor:pointer
 }
+
+.adopted-btn {
+  width:80%;
+  margin:20px 0;
+  height:30px;
+  border:none;
+  background-color:#959596;
+  color:#fff;
+  cursor:not-allowed;
+  transition:.3s;
+}
+
 .pagination {
   text-align: center;
   padding:40px;
@@ -100,3 +118,4 @@ button:hover{
   display: flex;
   justify-content: center;
 }
+

@@ -4,6 +4,7 @@ import { PetsInterface } from '../types/pets.interface';
 import { PetsService } from '../services/pets.service';
 import {FilterComponent} from '../filter/filter.component';
 import { petsProperties } from '../types/petsProperties.interface';
+import { NotifierService } from '../services/notifier.service';
 
 @Component({
   selector: 'app-show-pets',
@@ -20,11 +21,13 @@ export class ShowPetsComponent implements OnInit {
   searchText: string = '';
   petType: string = 'All';
   petGender: string = 'All';
-  adoptedBtn: boolean = false;
 
   @Output() showData: EventEmitter<any> = new EventEmitter();
 
-  constructor(private http: HttpClient, private petsService: PetsService) { }
+  constructor(private http: HttpClient,
+    private petsService: PetsService,
+    private notifierService: NotifierService
+  ) { }
 
   totalLength:any;
   page:number = 1;
@@ -81,13 +84,13 @@ export class ShowPetsComponent implements OnInit {
       }
       this.petsService.adoptPets(animal).subscribe((pets) => {
         console.log('Pets:', pets);
-        this.petsList = animal
+        this.petsList = animal;
+        this.renderPets()
+        this.notifierService.showNotification();
       });
       this.showData.emit(this.popup);
       this.petsService.setPets(animal);
     }
-
-    this.renderPets()
   }
 
 
