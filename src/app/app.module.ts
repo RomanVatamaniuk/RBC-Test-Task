@@ -14,6 +14,7 @@ import { PetPageComponent } from './pet-page/pet-page.component';
 import { FilterComponent } from './filter/filter.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SnackBarComponent } from './snack-bar/snack-bar.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { SnackBarComponent } from './snack-bar/snack-bar.component';
     PetPageComponent,
     FilterComponent,
     SnackBarComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,

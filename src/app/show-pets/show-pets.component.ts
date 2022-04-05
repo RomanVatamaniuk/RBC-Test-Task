@@ -44,20 +44,16 @@ export class ShowPetsComponent implements OnInit {
   }
 
   onFilter(properties: petsProperties) {
-    console.log('PROPERTIES',properties)
     this.petType = properties.type
     this.petGender = properties.gender
-    console.log('TYPE:', this.petType);
-    console.log('GENDER:', this.petGender);
     this.renderPets()
   }
 
   onSearchTextEntered(searchValue:string) {
      this.searchText = searchValue;
-    console.log('SearchEntered:', this.searchText);
-    this.petsService.searchPets(this.searchText).subscribe((pets: PetsInterface[]) => {
-      this.pets = pets;
-      this.totalLength = pets.length;
+     this.petsService.searchPets(this.searchText).subscribe((pets: PetsInterface[]) => {
+       this.pets = pets;
+       this.totalLength = pets.length;
     });
   }
 
@@ -83,7 +79,6 @@ export class ShowPetsComponent implements OnInit {
         "vaccinated": data.vaccinated
       }
       this.petsService.adoptPets(animal).subscribe((pets) => {
-        console.log('Pets:', pets);
         this.petsList = animal;
         this.renderPets()
         this.notifierService.showNotification();

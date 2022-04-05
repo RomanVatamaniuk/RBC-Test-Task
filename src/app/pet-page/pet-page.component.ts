@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Observable, switchMap } from 'rxjs';
 import { PetsService } from '../services/pets.service';
@@ -15,7 +15,6 @@ import { PetsInterface } from '../types/pets.interface';
 export class PetPageComponent implements OnInit {
 
   pet!: PetsInterface;
-  adoption: any;
 
   constructor(
     private http: HttpClient,
@@ -42,6 +41,7 @@ export class PetPageComponent implements OnInit {
   adoptPets(data: PetsInterface){
     if(data.adopted) {
       this.unAdoptPets(data);
+      this.renderPet();
     } else {
       const animal = {
         "id": data.id,
@@ -56,9 +56,8 @@ export class PetPageComponent implements OnInit {
         "vaccinated": data.vaccinated
       }
       this.petsService.adoptPets(animal).subscribe((pets) => {
-        console.log('Pets:', pets);
         this.pet = pets[data.id];
-        this.renderPet()
+        this.renderPet();
       });
     }
   }
@@ -76,16 +75,11 @@ export class PetPageComponent implements OnInit {
       "neutered": data.neutered,
       "vaccinated": data.vaccinated
     }
-    this.adoption = this.petsService.adoptPets(animal).subscribe((pets) => {
-      console.log('Pets:', pets);
+    this.petsService.adoptPets(animal).subscribe((pets) => {
       this.pet = pets[data.id];
       this.renderPet()
     });
-    console.log('UnAdopt Pet', data)
   }
 
-  ngOnDestroy() {
-    this.adoption.unsubscribe();
-  }
 }
 
