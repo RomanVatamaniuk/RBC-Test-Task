@@ -11,7 +11,7 @@ export class NotifierService {
 
   showNotification() {
     this.snackBar.openFromComponent(SnackBarComponent, {
-      duration: 1500,
+      duration: 3500,
       horizontalPosition:'center',
       panelClass:'notification'
     })

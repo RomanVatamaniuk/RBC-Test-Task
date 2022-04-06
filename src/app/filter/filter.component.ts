@@ -16,10 +16,11 @@ export class FilterComponent {
 
   @Output() properties: EventEmitter<petsProperties> = new EventEmitter<petsProperties>()
 
-  sendProperties(e:any){
+  sendProperties(e:petsProperties){
     this.properties.emit(this.props)
   }
-  sortAnimalsByType(e:any){
+
+  sortAnimalsByType(e: any){
     this.props.type = e.defaultValue;
     this.sendProperties(e);
   };

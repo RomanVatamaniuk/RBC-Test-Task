@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from '../app.component';
 import { PetPageComponent } from '../pet-page/pet-page.component';
 import { ShowPetsComponent } from '../show-pets/show-pets.component';
 

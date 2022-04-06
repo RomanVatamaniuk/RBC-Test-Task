@@ -118,4 +118,8 @@ a {
   display: flex;
   justify-content: center;
 }
-
+.no-results {
+  color:#959596;
+  text-align: center;
+  margin:60px;
+}
