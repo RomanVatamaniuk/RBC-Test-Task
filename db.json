@@ -20,7 +20,7 @@
       "age": "7 months",
       "image": "https://cdn.britannica.com/68/160068-050-53FE2889/Snowshoe-cat.jpg?q=60",
       "gender": "male",
-      "adopted": false,
+      "adopted": true,
       "neutered": "No",
       "vaccinated": "Yes"
     },
@@ -116,7 +116,7 @@
       "age": "10 months",
       "image": "https://hips.hearstapps.com/ghk.h-cdn.co/assets/17/30/pembroke-welsh-corgi.jpg?crop=1xw:0.9997114829774957xh;center,top&resize=980:*",
       "gender": "male",
-      "adopted": false,
+      "adopted": true,
       "neutered": "No",
       "vaccinated": "Yes"
     },
@@ -164,7 +164,7 @@
       "age": "1 year 2 months",
       "image": "https://media.istockphoto.com/photos/ginger-cat-portrait-picture-id1290233518?b=1&k=20&m=1290233518&s=170667a&w=0&h=C-eVqPpxcxCFqJsykl4rTzq0Kl995ZHCaLB9BgSgEzk=",
       "gender": "female",
-      "adopted": false,
+      "adopted": true,
       "neutered": "Yes",
       "vaccinated": "Yes"
     },
@@ -248,7 +248,7 @@
       "age": "1 year",
       "image": "https://images.unsplash.com/photo-1487300001871-12053913095d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGRvbWVzdGljJTIwY2F0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
       "gender": "female",
-      "adopted": false,
+      "adopted": true,
       "neutered": "No",
       "vaccinated": "Yes"
     },

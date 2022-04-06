@@ -1,5 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import { Component, EventEmitter, Output } from '@angular/core';
 import { petsProperties } from '../types/petsProperties.interface';
 
 
@@ -8,7 +7,7 @@ import { petsProperties } from '../types/petsProperties.interface';
   templateUrl: './filter.component.html',
   styleUrls: ['./filter.component.css']
 })
-export class FilterComponent implements OnInit {
+export class FilterComponent {
 
   props: petsProperties = {
     type:'All',
@@ -17,23 +16,16 @@ export class FilterComponent implements OnInit {
 
   @Output() properties: EventEmitter<petsProperties> = new EventEmitter<petsProperties>()
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
   sendProperties(e:any){
     this.properties.emit(this.props)
   }
   sortAnimalsByType(e:any){
     this.props.type = e.defaultValue;
-    console.log('TYPE:', this.props);
     this.sendProperties(e);
   };
 
   sortAnimalsByGender(event:any){
     this.props.gender = event.defaultValue;
-    console.log('GENDER:', this.props);
     this.sendProperties(event);
   };
 
