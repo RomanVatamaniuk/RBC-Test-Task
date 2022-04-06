@@ -53,7 +53,7 @@ export class PetsService {
     } else if(type === 'All' && gender === 'All'){
       return this.http.get<PetsInterface[]>(this.BASE_URL)
     } else {
-      return this.http.get<PetsInterface[]>(`${this.BASE_URL}?type=json-server&gender=${gender}&type=${type}`);
+      return this.http.get<PetsInterface[]>(`${this.BASE_URL}?type=${type}&gender=${gender}`);
     }
   }
 

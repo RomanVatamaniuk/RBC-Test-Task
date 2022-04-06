@@ -17,7 +17,7 @@ export class FilterComponent {
   @Output() properties: EventEmitter<petsProperties> = new EventEmitter<petsProperties>()
 
   sendProperties(e:petsProperties){
-    this.properties.emit(this.props)
+    this.properties.emit(this.props);
   }
 
   sortAnimalsByType(e: any){

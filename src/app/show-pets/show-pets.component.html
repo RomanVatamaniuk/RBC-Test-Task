@@ -33,10 +33,10 @@
 </div>
 <div *ngIf="hidePagination">
   <pagination-controls
-    *ngIf="totalLength <= 10? false: true"
     class="my-pagination pagination" 
     (pageChange)="page = $event"
-    >
+    *ngIf="totalLength <= 10? false: true"
+  >
 </pagination-controls>
 </div>
 </router-outlet>

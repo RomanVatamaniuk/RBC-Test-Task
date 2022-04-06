@@ -49,8 +49,14 @@ export class ShowPetsComponent implements OnInit {
   onSearchTextEntered(searchValue:string):void {
      this.searchText = searchValue;
      this.petsService.searchPets(this.searchText).subscribe((pets: PetsInterface[]) => {
-      this.pets = pets;
-      this.hidePagination = false;
+      if(pets.length <= 10){
+        this.pets = pets;
+        this.hidePagination = false;
+        console.log(pets.length);
+      } else {
+        this.pets = pets;
+        this.hidePagination = true;
+      }
       });
   }
 
