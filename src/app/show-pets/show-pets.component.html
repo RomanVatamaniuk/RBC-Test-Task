@@ -1,7 +1,7 @@
 <app-search (searchTextChanged)="onSearchTextEntered($event)"></app-search>
 <div class="no-results" *ngIf="totalLength == 0">No search results</div>
 <app-filter (properties)="onFilter($event)"></app-filter>
-<router-outlet></router-outlet>
+<router-outlet>
 <div *ngIf="pets.length" class="main">
 <div class="contentBox">
   <div *ngFor="let pet of pets | paginate: { itemsPerPage: 10,
@@ -31,10 +31,12 @@
   </div>
 </div>
 </div>
-<pagination-controls
-  *ngIf="totalLength <= 10? false: true"
-  class="my-pagination pagination" 
-  (pageChange)="page = $event"
-  >
+<div *ngIf="hidePagination">
+  <pagination-controls
+    *ngIf="totalLength <= 10? false: true"
+    class="my-pagination pagination" 
+    (pageChange)="page = $event"
+    >
 </pagination-controls>
-
+</div>
+</router-outlet>

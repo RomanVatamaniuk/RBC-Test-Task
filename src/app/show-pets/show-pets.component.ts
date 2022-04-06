@@ -18,8 +18,9 @@ export class ShowPetsComponent implements OnInit {
   searchText: string = '';
   petType: string = 'All';
   petGender: string = 'All';
-  totalLength:any;
+  totalLength:number = this.pets.length;
   page:number = 1;
+  hidePagination:boolean = true;
 
   @Output() showData: EventEmitter<any> = new EventEmitter();
 
@@ -48,9 +49,9 @@ export class ShowPetsComponent implements OnInit {
   onSearchTextEntered(searchValue:string):void {
      this.searchText = searchValue;
      this.petsService.searchPets(this.searchText).subscribe((pets: PetsInterface[]) => {
-       this.pets = pets;
-       this.totalLength = pets.length;
-    });
+      this.pets = pets;
+      this.hidePagination = false;
+      });
   }
 
   checkSearch(pet:PetsInterface, searchText:string){

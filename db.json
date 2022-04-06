@@ -8,7 +8,7 @@
       "age": "1 year",
       "image": "https://cdn.britannica.com/91/181391-050-1DA18304/cat-toes-paw-number-paws-tiger-tabby.jpg?q=60",
       "gender": "male",
-      "adopted": false,
+      "adopted": true,
       "neutered": "Yes",
       "vaccinated": "Yes"
     },
@@ -44,7 +44,7 @@
       "age": "3 months",
       "image": "https://cdn.britannica.com/92/181392-050-08187DB5/cat-British-Shorthair-grey.jpg?q=60",
       "gender": "male",
-      "adopted": false,
+      "adopted": true,
       "neutered": "No",
       "vaccinated": "Yes"
     },
