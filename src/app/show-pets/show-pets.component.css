@@ -123,3 +123,16 @@ a {
   text-align: center;
   margin:60px;
 }
+.search-wrap{
+  display:flex;
+  justify-content: center;
+  margin:20px;
+}
+.search {
+  width:350px;
+  height:35px;
+  padding:5px;
+  position: absolute;
+  z-index: 1000;
+  margin:2vh 38vw;
+}

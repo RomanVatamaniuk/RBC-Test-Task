@@ -1,16 +1,14 @@
-<app-search (searchTextChanged)="onSearchTextEntered($event)"></app-search>
-<div class="no-results" *ngIf="totalLength == 0">No search results</div>
+<input type="text" [(ngModel)]="searchStr" class="search" placeholder="Search"/>
+<div class="no-results" *ngIf="showNoDataMessage">No search results</div>
 <app-filter (properties)="onFilter($event)"></app-filter>
 <router-outlet>
 <div *ngIf="pets.length" class="main">
 <div class="contentBox">
-  <div *ngFor="let pet of pets | paginate: { itemsPerPage: 10,
+  <div *ngFor="let pet of pets| searchAnimals:searchStr | paginate: { itemsPerPage: 10,
     currentPage: page,
-    totalItems: totalLength}">
-
-  <div [ngClass]="pet.adopted? 'disabled-box': 'box'"
-       *ngIf="searchText === '' || checkSearch(pet, searchText)"
+    totalItems: totalLength}"
   >
+  <div [ngClass]="pet.adopted? 'disabled-box': 'box'">
     <img src="{{pet.image}}" alt="{{pet.type === 'Dog'? 'Dog': 'Cat'}}"/>
     <content>
       <span class="name">{{pet.name}}</span>
@@ -24,19 +22,18 @@
       <button
         (click)="adoptAnimal(pet)"
         [ngClass]="pet.adopted? 'adopted-btn': 'unadopted-btn'"
-      >{{pet.adopted ? 'Adopted': 'Adopt me'}}
+        >
+        {{pet.adopted ? 'Adopted': 'Adopt me'}}
       </button>
     </div>
   </div>
   </div>
 </div>
 </div>
-<div *ngIf="hidePagination">
+<div>
   <pagination-controls
     class="my-pagination pagination" 
-    (pageChange)="page = $event"
-    *ngIf="totalLength <= 10? false: true"
-  >
+    (pageChange)="page = $event">
 </pagination-controls>
 </div>
 </router-outlet>

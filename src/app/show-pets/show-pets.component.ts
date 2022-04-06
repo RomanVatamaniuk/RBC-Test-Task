@@ -15,12 +15,13 @@ export class ShowPetsComponent implements OnInit {
   pets: PetsInterface[] = [];
   petsList = {};
   adopted: boolean = true;
-  searchText: string = '';
+  searchStr:string = '';
   petType: string = 'All';
   petGender: string = 'All';
   totalLength:number = this.pets.length;
   page:number = 1;
   hidePagination:boolean = true;
+  showNoDataMessage: boolean = false;
 
   @Output() showData: EventEmitter<any> = new EventEmitter();
 
@@ -34,36 +35,19 @@ export class ShowPetsComponent implements OnInit {
   }
 
   renderPets():void{
-    this.petsService.sortPets(this.petType, this.petGender).subscribe((pets: PetsInterface[]) => {
+    this.petsService.getPets().subscribe((pets: PetsInterface[])=>{
       this.pets = pets;
       this.totalLength = pets.length;
-    });
+    })
   }
 
   onFilter(properties: petsProperties):void {
     this.petType = properties.type
     this.petGender = properties.gender
-    this.renderPets()
-  }
-
-  onSearchTextEntered(searchValue:string):void {
-     this.searchText = searchValue;
-     this.petsService.searchPets(this.searchText).subscribe((pets: PetsInterface[]) => {
-      if(pets.length <= 10){
-        this.pets = pets;
-        this.hidePagination = false;
-      } else {
-        this.pets = pets;
-        this.hidePagination = true;
-      }
-      });
-  }
-
-  checkSearch(pet:PetsInterface, searchText:string){
-    return pet.name.toLowerCase().includes(searchText)
-      || searchText === '' || pet.Breed.toLowerCase().includes(searchText)
-      || searchText === '' || pet.Breed.toUpperCase().includes(searchText)
-      || searchText === '' || pet.name.toUpperCase().includes(searchText)
+    this.petsService.sortPets(this.petType, this.petGender).subscribe((pets: PetsInterface[]) => {
+      this.pets = pets;
+      this.totalLength = pets.length;
+    });
   }
 
   adoptAnimal(data: PetsInterface):void{
