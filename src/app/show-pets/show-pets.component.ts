@@ -52,7 +52,6 @@ export class ShowPetsComponent implements OnInit {
       if(pets.length <= 10){
         this.pets = pets;
         this.hidePagination = false;
-        console.log(pets.length);
       } else {
         this.pets = pets;
         this.hidePagination = true;
