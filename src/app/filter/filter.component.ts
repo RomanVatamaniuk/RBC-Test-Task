@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { petsProperties } from '../types/petsProperties.interface';
+import { Component} from '@angular/core';
+import { PetsService } from '../services/pets.service';
 
 @Component({
   selector: 'app-filter',
@@ -8,25 +8,14 @@ import { petsProperties } from '../types/petsProperties.interface';
 })
 export class FilterComponent {
 
-  props: petsProperties = {
-    type:'All',
-    gender:'All',
-  }
-
-  @Output() properties: EventEmitter<petsProperties> = new EventEmitter<petsProperties>()
-
-  sendProperties(e:petsProperties){
-    this.properties.emit(this.props);
-  }
+  constructor(private petsService:PetsService){}
 
   sortAnimalsByType(e: any){
-    this.props.type = e.defaultValue;
-    this.sendProperties(e);
+    this.petsService.setType(e.defaultValue);
   };
 
   sortAnimalsByGender(event:any){
-    this.props.gender = event.defaultValue;
-    this.sendProperties(event);
+    this.petsService.setGender(event.defaultValue);
   };
 
 }

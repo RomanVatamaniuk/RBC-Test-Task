@@ -1,10 +1,9 @@
 <input type="text" [(ngModel)]="searchStr" class="search" placeholder="Search"/>
-<div class="no-results" *ngIf="showNoDataMessage">No search results</div>
-<app-filter (properties)="onFilter($event)"></app-filter>
+<app-filter (click)="onFilter()"></app-filter> 
 <router-outlet>
 <div class="main">
 <div class="contentBox">
-  <div *ngFor="let pet of pets| searchAnimals:searchStr | paginate: { itemsPerPage: 10,
+  <div *ngFor="let pet of pets | searchAnimals:searchStr | paginate: { itemsPerPage: 10,
     currentPage: page,
     totalItems: totalLength}"
   >
@@ -30,7 +29,7 @@
   </div>
 </div>
 </div>
-<div>
+<div *ngIf="!searchStr">
   <pagination-controls
     class="my-pagination pagination" 
     (pageChange)="page = $event">

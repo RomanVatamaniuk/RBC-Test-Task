@@ -1,7 +1,6 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { PetsInterface } from '../types/pets.interface';
 import { PetsService } from '../services/pets.service';
-import { petsProperties } from '../types/petsProperties.interface';
 import { NotifierService } from '../services/notifier.service';
 
 @Component({
@@ -20,29 +19,34 @@ export class ShowPetsComponent implements OnInit {
   petGender: string = 'All';
   totalLength:number = this.pets.length;
   showNoDataMessage: boolean = false
-  page:number = 1;
-
-  @Output() showData: EventEmitter<PetsInterface> = new EventEmitter();
+  page: number = 1
 
   constructor(
     private petsService: PetsService,
     private notifierService: NotifierService
   ) {}
+  
 
   ngOnInit(): void {
    this.renderPets();
   }
 
   renderPets():void{
-    this.petsService.getPets().subscribe((pets: PetsInterface[])=>{
+    this.petsService.getPets()
+    .subscribe((pets: PetsInterface[])=>{
       this.pets = pets;
       this.totalLength = pets.length;
     })
+
   }
 
-  onFilter(properties: petsProperties):void {
-    this.petType = properties.type
-    this.petGender = properties.gender
+  onFilter():void {
+    this.petsService.type.subscribe(prop => {
+      this.petType = prop;
+    })
+    this.petsService.gender.subscribe(prop => {
+      this.petGender = prop;
+    })
     this.petsService.sortPets(this.petType, this.petGender).subscribe((pets: PetsInterface[]) => {
       this.pets = pets;
       this.totalLength = pets.length;
@@ -63,9 +67,4 @@ export class ShowPetsComponent implements OnInit {
       this.petsService.setPets(animal);
     }
   }
-
-  showPet(item: PetsInterface){
-    console.log('ITEM',item);
-  }
-
 }

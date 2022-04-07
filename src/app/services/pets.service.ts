@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { BehaviorSubject, Observable } from "rxjs";
 import { PetsInterface } from "../types/pets.interface";
 
 @Injectable({providedIn: 'root'})
@@ -10,6 +10,20 @@ export class PetsService {
   pets:PetsInterface[] = [];
   onePet:any;
   BASE_URL: string = 'http://localhost:3000/pets';
+
+  petPropType$ = new BehaviorSubject<string>('All');
+  petPropGender$ = new BehaviorSubject<string>('All');
+
+  gender = this.petPropGender$.asObservable();
+  type = this.petPropType$.asObservable();
+
+ 
+  setGender(newprop:string){
+    this.petPropGender$.next(newprop)
+  }
+  setType(newprop:string){
+    this.petPropType$.next(newprop)
+  }
 
   constructor(private http: HttpClient) { }
 
