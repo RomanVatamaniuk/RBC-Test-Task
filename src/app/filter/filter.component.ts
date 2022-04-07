@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { petsProperties } from '../types/petsProperties.interface';
 
-
 @Component({
   selector: 'app-filter',
   templateUrl: './filter.component.html',

@@ -5,8 +5,9 @@ import { ShowPetsComponent } from '../show-pets/show-pets.component';
 
 const routes: Routes = [
   {path:'home', component: ShowPetsComponent},
-  {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'pet/:id', component: PetPageComponent},
+  {path: '**', redirectTo:'/home'}
 ];
 
 @NgModule({

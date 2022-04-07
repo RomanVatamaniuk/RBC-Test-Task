@@ -19,11 +19,10 @@ export class ShowPetsComponent implements OnInit {
   petType: string = 'All';
   petGender: string = 'All';
   totalLength:number = this.pets.length;
+  showNoDataMessage: boolean = false
   page:number = 1;
-  hidePagination:boolean = true;
-  showNoDataMessage: boolean = false;
 
-  @Output() showData: EventEmitter<any> = new EventEmitter();
+  @Output() showData: EventEmitter<PetsInterface> = new EventEmitter();
 
   constructor(
     private petsService: PetsService,
@@ -63,6 +62,10 @@ export class ShowPetsComponent implements OnInit {
       });
       this.petsService.setPets(animal);
     }
+  }
+
+  showPet(item: PetsInterface){
+    console.log('ITEM',item);
   }
 
 }

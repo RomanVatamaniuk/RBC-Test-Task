@@ -23,7 +23,8 @@ export class PetPageComponent implements OnInit {
   }
 
   renderPet():void {
-    this.activatedRoute.params.subscribe((params: any) => {
+    this.activatedRoute.params.subscribe((params:any) => {
+      console.log('PARAMS', params);
       this.pet = params
       if (params.id) {
         this.petsService.getPetsById(params.id).subscribe((res: PetsInterface)=>{

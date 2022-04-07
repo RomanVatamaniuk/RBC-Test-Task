@@ -2,7 +2,7 @@
 <div class="no-results" *ngIf="showNoDataMessage">No search results</div>
 <app-filter (properties)="onFilter($event)"></app-filter>
 <router-outlet>
-<div *ngIf="pets.length" class="main">
+<div class="main">
 <div class="contentBox">
   <div *ngFor="let pet of pets| searchAnimals:searchStr | paginate: { itemsPerPage: 10,
     currentPage: page,

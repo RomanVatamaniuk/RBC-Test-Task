@@ -4,8 +4,9 @@ import { PetsInterface } from '../types/pets.interface';
 @Pipe({
     name: 'searchAnimals'
 })
-export class SearchPipe implements PipeTransform{
 
+export class SearchPipe implements PipeTransform{
+    
     transform(pets: PetsInterface[], search = ''): PetsInterface[] {
         if(!search.trim()) {
             return pets;
