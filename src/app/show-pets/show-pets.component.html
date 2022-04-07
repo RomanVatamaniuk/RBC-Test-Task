@@ -21,18 +21,18 @@
       <button
         (click)="adoptAnimal(pet)"
         [ngClass]="pet.adopted? 'adopted-btn': 'unadopted-btn'"
-        >
-        {{pet.adopted ? 'Adopted': 'Adopt me'}}
+      >
+      {{pet.adopted ? 'Adopted': 'Adopt me'}}
       </button>
     </div>
   </div>
   </div>
 </div>
 </div>
-<div *ngIf="!searchStr">
-  <pagination-controls
-    class="my-pagination pagination" 
-    (pageChange)="page = $event">
-</pagination-controls>
-</div>
+  <div *ngIf="!searchStr">
+    <pagination-controls
+      class="my-pagination pagination" 
+      (pageChange)="page = $event">
+    </pagination-controls>
+  </div>
 </router-outlet>

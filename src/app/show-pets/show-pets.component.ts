@@ -26,7 +26,6 @@ export class ShowPetsComponent implements OnInit {
     private notifierService: NotifierService
   ) {}
   
-
   ngOnInit(): void {
    this.renderPets();
   }
@@ -37,7 +36,6 @@ export class ShowPetsComponent implements OnInit {
       this.pets = pets;
       this.totalLength = pets.length;
     })
-
   }
 
   onFilter():void {

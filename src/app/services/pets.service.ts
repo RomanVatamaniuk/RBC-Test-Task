@@ -17,15 +17,14 @@ export class PetsService {
   gender = this.petPropGender$.asObservable();
   type = this.petPropType$.asObservable();
 
- 
+  constructor(private http: HttpClient) { }
+
   setGender(newprop:string){
     this.petPropGender$.next(newprop)
   }
   setType(newprop:string){
     this.petPropType$.next(newprop)
   }
-
-  constructor(private http: HttpClient) { }
 
   getPets():Observable<PetsInterface[]>{
     return this.http.get<PetsInterface[]>(this.BASE_URL)
@@ -70,5 +69,4 @@ export class PetsService {
       return this.http.get<PetsInterface[]>(`${this.BASE_URL}?type=${type}&gender=${gender}`);
     }
   }
-
 }

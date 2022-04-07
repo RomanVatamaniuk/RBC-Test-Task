@@ -17,6 +17,5 @@ export class FilterComponent {
   sortAnimalsByGender(event:any){
     this.petsService.setGender(event.defaultValue);
   };
-
 }
 
